@@ -7,7 +7,8 @@ const toUpper = computed(() => props.name.toLocaleUpperCase())
 </script>
 
 <template>
-  <div>hello, {{ toUpper }}</div>
+  <div text="green 3xl" font-mono>hello, {{ toUpper }}</div>
+  <div i-carbon-accessibility text="3xl red"></div>
 </template>
 
 <style>
