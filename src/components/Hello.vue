@@ -1,11 +1,13 @@
 <script setup lang="ts">
-defineProps<{
+
+const props = defineProps<{
   name: String
 }>()
+const toUpper = computed(() => props.name.toLocaleUpperCase())
 </script>
 
 <template>
-  <div>hello, {{ name }}</div>
+  <div>hello, {{ toUpper }}</div>
 </template>
 
 <style>
