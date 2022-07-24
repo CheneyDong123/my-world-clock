@@ -15,10 +15,8 @@ export default defineConfig({
     }),
     Unocss({
       presets: [
-        presetAttributify({
-          /* preset options */
-        }),
-        presetUno(),
+        presetAttributify(), 
+        presetUno(), 
         presetIcons()
       ],
     }),
