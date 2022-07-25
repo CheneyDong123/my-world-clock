@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import TimezoneSearch from '@/components/TimezoneSearch.vue'
 </script>
 
 <template>

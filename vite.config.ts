@@ -3,6 +3,7 @@ import { URL, fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
 import Unocss from 'unocss/vite'
 import { presetAttributify, presetIcons, presetUno } from 'unocss'
 
@@ -10,6 +11,7 @@ import { presetAttributify, presetIcons, presetUno } from 'unocss'
 export default defineConfig({
   plugins: [
     Vue(),
+    Components(),
     AutoImport({
       imports: ['vue'],
       dirs: ['./src/composables'],

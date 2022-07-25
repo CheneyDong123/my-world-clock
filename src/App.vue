@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ActionBar from '@/components/ActionBar.vue'
-import TimezoneSchedular from '@/components/TimezoneSchedular.vue'
 </script>
 
 <template>
