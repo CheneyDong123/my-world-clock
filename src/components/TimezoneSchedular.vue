@@ -3,7 +3,7 @@ import { zones } from '@/composables/state'
 </script>
 
 <template>
-  <div>
+  <div p3>
     <pre>{{ zones }}</pre>
   </div>
 </template>

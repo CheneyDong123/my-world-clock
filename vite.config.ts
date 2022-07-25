@@ -21,7 +21,9 @@ export default defineConfig({
     }),
     Unocss({
       shortcuts: {
-        'border-base': 'border-gray/20 dark:border-gray/15',
+        'border-base': 'border-gray/40 dark:border-gray/15',
+        'bg-base': 'bg-white dark:bg-truegray-800',
+        'bg-canvas': 'bg-gray:15 dark:bg-truegray-900',
       },
       presets: [
         presetAttributify(),
