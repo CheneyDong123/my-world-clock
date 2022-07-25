@@ -8,21 +8,21 @@ const fuse = new Fuse(timezones, {
   keys: ['name'],
 })
 
-const input = ref('')
+let input = $ref('')
 
 const searchResult = computed(() => {
-  return fuse.search(input.value)
+  return fuse.search(input)
 })
 
 function add(t: Timezones) {
   addToTimezone(t)
-  input.value = ''
+  input = ''
 }
 </script>
 
 <template>
   <div relative>
-    <input v-model="input" type="text" px2 py1 border="~ gray/15 rounded" bg-transparent w-full placeholder="search timezone...">
+    <input v-model="input" type="text" px2 py1 border="~ base rounded" bg-transparent w-full placeholder="search timezone...">
     <div v-show="input" absolute top-full bg-gray-500 w-full>
       <button v-for="i of searchResult" :key="i.refIndex" flex gap2 @click="add(i.item)">
         <div font-mono w-10 text-right>

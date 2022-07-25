@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div border="~ gray/20" m2>
+  <div border="~ base" m2>
     <ActionBar />
     <TimezoneSchedular />
   </div>

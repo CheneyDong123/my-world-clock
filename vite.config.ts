@@ -10,14 +10,19 @@ import { presetAttributify, presetIcons, presetUno } from 'unocss'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    Vue(),
+    Vue({
+      reactivityTransform: true,
+    }),
     Components(),
     AutoImport({
-      imports: ['vue'],
+      imports: ['vue', 'vue/macros', '@vueuse/core'],
       dirs: ['./src/composables'],
       vueTemplate: true,
     }),
     Unocss({
+      shortcuts: {
+        'border-base': 'border-gray/20 dark:border-gray/15',
+      },
       presets: [
         presetAttributify(),
         presetUno(),
