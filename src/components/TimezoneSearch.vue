@@ -35,11 +35,23 @@ function onKeyDown(e: any): void {
 
 <template>
   <div relative m2>
-    <input v-model="input" type="text" p="x2 y1" text="xl" border="~ base rounded" bg-transparent w-full
-      placeholder="Search timezone..." @keydown="onKeyDown">
-    <div v-show="input" absolute top-full bg-base border="~ base" w-full max-h-60 overflow-auto shadow rounded>
-      <button v-for="i, idx of searchResult" :key="i.refIndex" block w-full :class="idx === index ? 'bg-gray:15' : ''"
-        @click="add(i.item)">
+    <input
+      v-model="input"
+      type="text" p="x2 y1" text="xl" border="~ base rounded" bg-transparent w-full
+      placeholder="Search timezone..." @keydown="onKeyDown"
+    >
+    <div
+      v-show="input"
+      absolute top-full bg-base border="~ base" w-full max-h-60 overflow-auto shadow rounded
+      z-10
+    >
+      <button
+        v-for="i, idx of searchResult"
+        :key="i.refIndex"
+        block w-full
+        :class="idx === index ? 'bg-gray:15' : ''"
+        @click="add(i.item)"
+      >
         <TimezoneItme :timezone="i.item" />
       </button>
     </div>
