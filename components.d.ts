@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     NacBar: typeof import('./src/components/NacBar.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     Switch: typeof import('./src/components/switch.vue')['default']
+    TimezoneItme: typeof import('./src/components/TimezoneItme.vue')['default']
     TimezoneSchedular: typeof import('./src/components/TimezoneSchedular.vue')['default']
     TimezoneSearch: typeof import('./src/components/TimezoneSearch.vue')['default']
   }

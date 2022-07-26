@@ -4,7 +4,7 @@
 <template>
   <div bg-canvas h-screen>
     <NavBar />
-    <div border="~ base" rounded bg-base m2>
+    <div border="~ base" rounded bg-base m4 shadow>
       <ActionBar />
       <TimezoneSchedular />
     </div>
