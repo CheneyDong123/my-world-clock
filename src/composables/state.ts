@@ -4,7 +4,9 @@ import type { Timezones } from '@/types'
 const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
 const zoneNames = useLocalStorage<String[]>('world-time-zones', [userTimezone])
+
 export const zones = computed(() => zoneNames.value.map(name => timezones.find(t => t.name === name)))
+
 export function addToTimezone(timezone: Timezones) {
   if (zoneNames.value.includes(timezone.name))
     return

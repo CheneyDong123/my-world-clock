@@ -6,6 +6,7 @@ export const timezones = timezonesRaw.flatMap((i: Timezone) => {
       name: u,
       offset: i.offset,
       isdst: i.isdst,
+      addr: i.abbr,
     }
   })
 })

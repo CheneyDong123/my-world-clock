@@ -1,5 +1,6 @@
 export interface Timezones {
-  name: String
+  name: string
   offset: Number
   isdst: Boolean
+  addr?: string
 }
