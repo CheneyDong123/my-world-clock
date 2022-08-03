@@ -13,28 +13,29 @@ const formater = new Intl.DateTimeFormat('en-US', {
 })
 
 const state = $computed(() => timezone.name.split('/')[0].replace(/_/g, ' '))
-const city = $computed(() => timezone.name.split('/')[1].replace(/_/g, ' '))
+const city = $computed(() => timezone.name.split('/')[1]?.replace(/_/g, ' '))
 const time = $computed(() => timezone.name ? formater.format(useNow().value) : '')
 const offect = $computed(() => timezone.offset > 0 ? `+${timezone.offset}` : timezone.offset)
 </script>
 
 <template>
-  <div flex w-full p1>
-    <div w-10 grid place-items-center op80 font-bold>
+  <div flex flex-wrap gap2 py1>
+    <div w-10 op80 font-bold>
       {{ offect }}
     </div>
-    <div flex="~ col" text-left ml2 justify-center flex-auto>
-      <div text-l flex items-center>
+    <div flex="~ col" text-left flex-auto>
+      <div>
         {{ city }}
-        <span border="~ base rounded" px1 mx1 text-1>{{ timezone.addr }}</span>
+        <span border="~ base rounded" px1>{{ timezone.addr }}</span>
       </div>
-      <div text-sm op50 leading-1rem>
+      <div text-sm op50 leading-1em>
         {{ state }}
       </div>
     </div>
-    <div flex-right tabular-nums>
+    <div tabular-nums>
       {{ time }}
     </div>
+    <slot />
   </div>
 </template>
 

@@ -4,8 +4,10 @@ import { moveZone, removeZone, zones } from '@/composables/state'
 
 <template>
   <div>
-    <div v-for="i, idx in zones" :key="idx" px3 py3 border="b base" relative>
-      <TimezoneItme :timezone="i" />
+    <div v-for="i, idx in zones" :key="idx" px4 py2 border="b base" relative>
+      <TimezoneItme :timezone="i">
+        <TimeDetail :timezone="i" />
+      </TimezoneItme>
       <div flex="~ col" justify-center absolute top-0 bottom-0 left="-5">
         <button
           v-if="i && idx > 0"
