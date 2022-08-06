@@ -11,6 +11,8 @@ declare module '@vue/runtime-core' {
     DarkSwitcher: typeof import('./src/components/DarkSwitcher.vue')['default']
     NacBar: typeof import('./src/components/NacBar.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
+    Selection: typeof import('./src/components/Selection.vue')['default']
+    SelectionOverlay: typeof import('./src/components/SelectionOverlay.vue')['default']
     Switch: typeof import('./src/components/switch.vue')['default']
     TimeDetail: typeof import('./src/components/TimeDetail.vue')['default']
     TimezoneItme: typeof import('./src/components/TimezoneItme.vue')['default']

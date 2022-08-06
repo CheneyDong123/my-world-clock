@@ -23,14 +23,15 @@ const offset = $computed(() => {
 </script>
 
 <template>
-  <div flex flex-wrap gap2 py1 items-center>
+  <div flex="~ auto" py1 gap2 items-center justify-between>
     <div
-      w-10 op80 font-bold flex justify-center
+      op70 font-bold flex justify-center w10
+      :text="offset !== 0 ? 'sky/60' : ''"
       :title="`${timezone.offset} ${timezone.addr}`"
     >
       {{ offset }}
     </div>
-    <div flex="~ col" text-left flex-auto>
+    <div flex="~ col auto" text-left md:w-40>
       <div>
         {{ city }}
         <span border="~ base rounded" px1 text-xs>{{ timezone.addr }}</span>
@@ -39,10 +40,9 @@ const offset = $computed(() => {
         {{ state }}
       </div>
     </div>
-    <div tabular-nums>
+    <div pr2>
       {{ time }}
     </div>
-    <slot />
   </div>
 </template>
 

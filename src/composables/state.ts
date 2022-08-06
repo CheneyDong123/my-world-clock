@@ -26,7 +26,7 @@ export const storage = useLocalStorage('time-block-state', {
 
 const zoneNames = toRef(storage.value, 'zones')
 export const homeZone = toRef(storage.value, 'home')
-export const homeOffset = ref(timezones.find(t => t.name === homeZone.value)?.offset || 0)
+export const homeOffset = computed(() => timezones.find(t => t.name === homeZone.value)?.offset || 0)
 export const zones = computed(() => zoneNames.value.map(name => timezones.find(t => t.name === name)))
 
 export function addToTimezone(timezone: Timezones) {
