@@ -1,21 +1,16 @@
 <script setup lang="ts">
 import type { Timezones } from '@/types'
-import { homeOffset } from '@/composables/state'
+import { homeOffset, now } from '@/composables/state'
+import { tiemzoneItemHeight } from '@/composables/constant'
+import { timeFormater } from '@/composables/until'
 
 const { timezone } = defineProps<{
   timezone: Timezones
 }>()
 
-const formater = new Intl.DateTimeFormat('en-US', {
-  timeZone: timezone.name,
-  hour12: false,
-  hour: 'numeric',
-  minute: 'numeric',
-})
-
 const state = $computed(() => timezone.name.split('/')[0].replace(/_/g, ' '))
 const city = $computed(() => timezone.name.split('/')[1]?.replace(/_/g, ' '))
-const time = $computed(() => timezone.name ? formater.format(useNow().value) : '')
+const time = $computed(() => timezone.name ? timeFormater(timezone).format(now.value) : '')
 const offset = $computed(() => {
   const offset = timezone.offset - homeOffset.value
   return offset > 0 ? `+${offset}` : offset
@@ -23,7 +18,10 @@ const offset = $computed(() => {
 </script>
 
 <template>
-  <div flex="~ auto" py1 gap2 items-center justify-between>
+  <div
+    flex="~ auto" items-center justify-between
+    :style="{ height: `${tiemzoneItemHeight}px` }"
+  >
     <div
       op70 font-bold flex justify-center w10
       :text="offset !== 0 ? 'sky5/90' : ''"
@@ -32,7 +30,7 @@ const offset = $computed(() => {
       {{ offset }}
     </div>
     <div flex="~ col auto" text-left md:w-40>
-      <div>
+      <div text-ellipsis>
         {{ city }}
         <span border="~ base rounded" px1 text-xs>{{ timezone.addr }}</span>
       </div>

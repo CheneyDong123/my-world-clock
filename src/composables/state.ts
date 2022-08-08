@@ -11,8 +11,8 @@ export interface state {
 }
 
 export interface Selections {
-  to: Date
-  from: Date
+  to: number
+  from: number
 }
 
 const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone
@@ -24,6 +24,12 @@ export const storage = useLocalStorage('time-block-state', {
   selections: [],
 })
 
+export const selection: Selections = reactive({
+  to: 0,
+  from: 0,
+})
+
+export const now = useNow()
 const zoneNames = toRef(storage.value, 'zones')
 export const homeZone = toRef(storage.value, 'home')
 export const homeOffset = computed(() => timezones.find(t => t.name === homeZone.value)?.offset || 0)

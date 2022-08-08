@@ -1,17 +1,20 @@
 <script setup lang="ts">
+import { dayCellWidth } from '@/composables/constant'
+import { selection } from '@/composables/state'
+import { toRounded } from '@/composables/until'
+
 const el = ref<HTMLDivElement>()
 
-const { x, y } = useMouse()
+const { x } = useMouse()
 const { pressed } = useMousePressed()
-const box = useElementBounding(el)
-let overLayWidth = $ref(70)
 
-let left = $ref(x.value - box.left.value)
-let right = $ref(0)
+let overLayWidth = $ref(dayCellWidth)
+let edgeStart = $ref(0)
+let edgeEnd = $ref(0)
 
-const isPressed = $computed(() => pressed.value)
-const leftEdge = $computed<number>(() => Math.min(right, left))
-const rightEdge = $computed<number>(() => Math.max(left, right))
+const isPressed = $computed<boolean>(() => pressed.value)
+const leftEdge = $computed<number>(() => Math.min(edgeStart, edgeEnd))
+const rightEdge = $computed<number>(() => Math.max(edgeStart, edgeEnd))
 const position = $computed(() => ({
   left: `${leftEdge}px`,
   width: `${overLayWidth}px`,
@@ -19,18 +22,9 @@ const position = $computed(() => ({
   bottom: '0',
 }))
 
-useEventListener('mousedown', () => {
-  left = x.value - 29
-})
-
-watchEffect(() => {
-  right = x.value
-  overLayWidth = Math.abs(right - left)
-})
-
 const leftWhiteout = $computed(() => ({
-  left: '0',
-  width: `${leftEdge}px`,
+  left: `${selection.from - 29}px`,
+  width: `${leftEdge - selection.from + 29}px`,
   top: '0',
   bottom: '0',
 }))
@@ -41,13 +35,22 @@ const rightWhiteout = $computed(() => ({
   top: '0',
   bottom: '0',
 }))
+
+useEventListener('pointerdown', () => {
+  edgeStart = (selection.from > x.value ? selection.from : toRounded(x.value)) - 29
+})
+
+watchEffect(() => {
+  edgeEnd = (selection.from > x.value ? selection.from + dayCellWidth : x.value > selection.to ? selection.to + 5 : toRounded(x.value) + 4) - 29
+  overLayWidth = Math.abs(edgeStart - edgeEnd)
+})
 </script>
 
 <template>
   <div v-show="isPressed" ref="el" pointer-events-none>
-    <div absolute :style="leftWhiteout" bg-white:60 />
-    <div absolute :style="rightWhiteout" bg-white:60 />
-    <div absolute border="3 green rounded" :style="position" />
+    <div absolute :style="leftWhiteout" bg="white/60 dark:gray7/30" />
+    <div absolute :style="rightWhiteout" bg="white/60 dark:gray7/30" />
+    <div absolute border="3 green6 rounded dark:green8" :style="position" />
   </div>
 </template>
 
