@@ -3,7 +3,7 @@ import { moveZone, removeZone, zones } from '@/composables/state'
 </script>
 
 <template>
-  <div relative select-none>
+  <div relative select-none of-x-auto>
     <div v-for="i, idx in zones" :key="idx" px4 py2 border="b base" relative>
       <div flex="~ none" items-center justify-between gap3>
         <TimezoneItme :timezone="i" />

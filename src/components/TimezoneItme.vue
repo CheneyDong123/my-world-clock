@@ -26,7 +26,7 @@ const offset = $computed(() => {
   <div flex="~ auto" py1 gap2 items-center justify-between>
     <div
       op70 font-bold flex justify-center w10
-      :text="offset !== 0 ? 'sky/60' : ''"
+      :text="offset !== 0 ? 'sky5/90' : ''"
       :title="`${timezone.offset} ${timezone.addr}`"
     >
       {{ offset }}
