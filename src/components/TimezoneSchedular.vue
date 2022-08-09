@@ -23,7 +23,7 @@ import { tiemzoneItemHeight } from '@/composables/constant'
         flex="~ col" items-center justify-center
       >
         <div v-if="zone?.name !== storage.home" flex="~ col">
-          <button v-if="zone && idx > 1" icon-button i-carbon-caret-up @click="moveZone(zone.name, -1)" />
+          <button v-if="zone && idx !== 1" icon-button i-carbon-caret-up @click="moveZone(zone.name, -1)" />
           <button v-if="zone" icon-button i-carbon-close @click="removeZone(zone.name)" />
           <button v-if="zone && idx < zones.length - 1" icon-button i-carbon-caret-down @click="moveZone(zone.name, 1)" />
         </div>

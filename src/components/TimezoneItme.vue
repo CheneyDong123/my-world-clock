@@ -27,9 +27,10 @@ const offset = $computed(() => {
       :text="offset !== 0 ? 'sky5/90' : ''"
       :title="`${timezone.offset} ${timezone.addr}`"
     >
-      {{ offset }}
+      <span v-if="offset === 0" i-ri-home-2-fill />
+      <span v-else>{{ offset }}</span>
     </div>
-    <div flex="~ col auto" text-left md:w-40>
+    <div flex="~ col auto" text-left md:w-40 ml3>
       <div text-ellipsis>
         {{ city }}
         <span border="~ base rounded" px1 text-xs>{{ timezone.addr }}</span>

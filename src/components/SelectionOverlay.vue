@@ -41,7 +41,7 @@ useEventListener('pointerdown', () => {
 })
 
 watchEffect(() => {
-  edgeEnd = (selection.from > x.value ? selection.from + dayCellWidth : x.value > selection.to ? selection.to + 5 : toRounded(x.value) + 4) - 29
+  edgeEnd = (selection.from > x.value ? selection.from : x.value > selection.to ? selection.to + 5 : toRounded(x.value) + 4) - 29
   overLayWidth = Math.abs(edgeStart - edgeEnd)
 })
 </script>
